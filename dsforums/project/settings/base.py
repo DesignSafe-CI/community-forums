@@ -10,6 +10,8 @@ import sys
 
 from spirit.settings import *
 
+from project.settings.agave import *
+
 # You may override or extend spirit settings below...
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -27,6 +29,7 @@ ST_RATELIMIT_CACHE = 'st_rate_limit'
 INSTALLED_APPS.extend([
     # 'my_app1',
     # 'my_app2',
+    'ds_auth',
 ])
 
 # same here, check out the spirit.settings.py
@@ -36,6 +39,9 @@ MIDDLEWARE_CLASSES.extend([
 ])
 
 # same here
+TEMPLATES[0]['DIRS'] = [
+    os.path.join(BASE_DIR, 'templates'),
+]
 TEMPLATES[0]['OPTIONS']['context_processors'].extend([
     # 'my_template_proc1',
     # 'my_template_proc2',
@@ -47,6 +53,8 @@ CACHES.update({
     #   'BACKEND': 'my.backend.path',
     # },
 })
+
+AUTHENTICATION_BACKENDS.insert(0, 'ds_auth.backends.AgaveOAuthBackend')
 
 
 ROOT_URLCONF = 'project.urls'

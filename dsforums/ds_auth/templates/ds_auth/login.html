@@ -1,0 +1,75 @@
+{% extends "spirit/_base.html" %}
+{% load staticfiles %}
+{% block title %}Log in to DesignSafe-CI{% endblock %}
+
+{% block content %}
+
+<link href="{% static 'ds_auth/designsafe_auth.css' %}" rel="stylesheet">
+<div class="container">
+  <h1 class="headline headline-community"><span class="hl-community">Log in</span> to DesignSafe-CI</h1>
+  <p class="lead">
+    Choose an option below to log in to DesignSafe.
+  </p>
+
+  <div class="row">
+    <div class="col-sm-6">
+      {% if message %}
+      <div class="alert alert-{{message.class}}">
+        <p>{{message.text}}</p>
+      </div>
+      {% endif %}
+      <div class="login-option-block">
+        <p>
+          <a href="{% url 'ds_auth:agave_oauth' %}?{{ request.META.QUERY_STRING }}" class="btn btn-lg btn-primary img-responsive">
+            <img class="provider-logo img-responsive" style="width:100% \9;" alt="TACC" title="Log in with TACC" src="{% static 'designsafe/apps/auth/logos/tacc.svg'%}">
+          </a>
+        </p>
+
+        <p>
+          <a href="{% url 'ds_auth:agave_oauth' %}?{{ request.META.QUERY_STRING }}">Log in using your TACC Account.</a>
+        </p>
+        <a href="https://www.designsafe-ci.org/register">Register for a TACC account</a>
+        &bull;
+        <a href="https://www.tacc.utexas.edu">TACC Website</a>
+      </div>
+
+      <div class="login-option-block corner-ribbon-container">
+        <p>
+          <button class="btn btn-lg btn-default img-responsive" disabled>
+            <img class="provider-logo img-responsive" alt="InCommon" title="Log in with InCommon" src="{% static 'designsafe/apps/auth/logos/incommon.gif'%}">
+          </button>
+        </p>
+
+        <p>
+          Log in using University or Institution credentials.
+        </p>
+        <a href="http://www.incommon.org/">More information about InCommon Federation</a>
+
+        <div class="corner-ribbon top-left shadow orange">
+          Coming Soon!
+        </div>
+      </div>
+
+      <div class="login-option-block corner-ribbon-container">
+        <p>
+          <button class="btn btn-lg btn-default img-responsive" disabled>
+            <img class="provider-logo img-responsive" style="width:100% \9;" alt="XSEDE" title="Log in with XSEDE" src="{% static 'designsafe/apps/auth/logos/xsede.svg'%}">
+          </button>
+        </p>
+
+        <p>
+          Log in using your XSEDE account.
+        </p>
+        <a href="https://portal.xsede.org/register">Register for an XSEDE account</a>
+        &bull;
+        <a href="https://www.xsede.org">XSEDE Website</a>
+
+        <div class="corner-ribbon top-left shadow orange">
+          Coming Soon!
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

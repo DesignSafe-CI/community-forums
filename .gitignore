@@ -63,3 +63,6 @@ target/
 
 #Local Django Database
 db.sqlite3*
+
+#Jetbrains
+.idea/
