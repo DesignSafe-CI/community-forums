@@ -1,11 +1,13 @@
 {% load spirit_tags i18n %}
 
     <header class="header js-tabs-container">
-		<a class="header-logo" href="{% url "spirit:index" %}">{{ config.site_name }}</a>
+<a class="header-logo" href="{% url "spirit:index" %}" style="position: relative; margin:15px 0px 0px; text-transform:uppercase; font-size:38px; font-weight:bold; text-decoration:none; font-family: Helvetica, Arial, sans-serif;"><span style="color: #6caa39;">Virtual Communities</span><br /><span style="color: #000;">of Practice</span></a>
+   
 
         {% if user.is_authenticated %}
             {% has_topic_notifications user as has_notifications %}
 
+            <table style="float:right; margin:15px 0px 0px;"><tr><td><a href="https://www.designsafe-ci.org/" target="_blank"><img src="https://www.designsafe-ci.org/static/images/ds-logo-horiz.0839e5d7912a.png" height="60px" width="225" style="margin:0px; padding:0px; border:0px;" /></a></td></tr><tr><td>
             <ul class="header-tabs">
                 <li><a class="header-tab-link js-tab" href="{% url "spirit:search:search" %}" data-related=".js-search-content"><i class="fa fa-search"></i></a></li><!--
              --><li><a class="header-tab-link js-tab-notification{% if has_notifications %} is-highlighted{% endif %}" href="{% url "spirit:topic:notification:index" %}" data-related=".js-notifications-content"><i class="fa fa-bell"></i></a></li><!--
@@ -38,7 +40,12 @@
                 </div>
 
             </div>
+            </td></tr></table>
         {% else %}
-            <a class="header-link" href="{% url "ds_auth:login" %}?next={% firstof request.get_full_path|urlencode '/' %}">{% trans "Log in" %}</a>
+            <table style="float:right; margin:15px 0px 0px;"><tr><td><a href="https://www.designsafe-ci.org/" target="_blank"><img src="https://www.designsafe-ci.org/static/images/ds-logo-horiz.0839e5d7912a.png" height="60px" width="225" style="margin:0px; padding:0px; border:0px;" /></a></td></tr><tr><td><a class="header-link" href="{% url "ds_auth:login" %}?next={% firstof request.get_full_path|urlencode '/' %}">{% trans "Log in" %}</a></td></tr></table>
         {% endif %}
+        
+    
 	</header>
+    <hr style="margin-top:-10px; padding-top:0px;" />
+    <p>Virtual Communities of Practice (VCoP) provide online forums for sharing and discussion organized around a research theme relevant to the NHERI program. Anyone can browse the available Communities, or request that a new Community be formed. To contribute to a Community discussion, we ask that you request to be added to that Community. Our initial Communities are centered around the main themes of the NHERI program – Water, Wind, Geotech, and Structures.</p>
