@@ -6,6 +6,7 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.http.response import HttpResponseRedirect
 
 import spirit.urls
 import ds_auth.urls
@@ -19,7 +20,10 @@ urlpatterns = [
     # Examples:
     # url(r'^$', 'example.views.home', name='home'),
     # url(r'^example/', include('example.foo.urls')),
-
+    url(r'^login/$', lambda request: HttpResponseRedirect('/auth?' + request.GET.urlencode())),
+    url(r'^user/login/$', lambda request: HttpResponseRedirect('/auth?' + request.GET.urlencode())),
+    url(r'^register/$', lambda request: HttpResponseRedirect('https://www.designsafe-ci.org/register')),
+    url(r'^user/register/$', lambda request: HttpResponseRedirect('https://www.designsafe-ci.org/register')),
     url(r'^auth/', include(ds_auth.urls, namespace='ds_auth', app_name='ds_auth')),
     url(r'^', include(spirit.urls)),
 
