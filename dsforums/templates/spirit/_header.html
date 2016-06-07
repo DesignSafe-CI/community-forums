@@ -42,7 +42,7 @@
             </div>
             </td></tr></table>
         {% else %}
-            <table style="float:right; margin:15px 0px 0px;"><tr><td><a href="https://www.designsafe-ci.org/" target="_blank"><img src="https://www.designsafe-ci.org/static/images/ds-logo-horiz.0839e5d7912a.png" height="60px" width="225" style="margin:0px; padding:0px; border:0px;" /></a></td></tr><tr><td><a class="header-link" href="{% url "ds_auth:login" %}?next={% firstof request.get_full_path|urlencode '/' %}">{% trans "Log in" %}</a></td></tr></table>
+            <table style="float:right; margin:15px 0px 0px;"><tr><td><a href="https://www.designsafe-ci.org/" target="_blank"><img src="https://www.designsafe-ci.org/static/images/ds-logo-horiz.0839e5d7912a.png" height="60px" width="225" style="margin:0px; padding:0px; border:0px;" /></a></td></tr><tr><td><a class="header-link" href="{% url "ds_auth:agave_oauth" %}?next={% firstof request.get_full_path|urlencode '/' %}">{% trans "Log in" %}</a></td></tr></table>
         {% endif %}
         
     
